@@ -7,11 +7,15 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://moagstar.github.io/</loc>
-  <lastmod>2017-01-12T20:52:00Z</lastmod>
+  <lastmod>2017-01-12T20:59:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://moagstar.github.io/2017/</loc>
+  <lastmod>2017-01-12T20:59:00Z</lastmod>
  </url>
  <url>
   <loc>http://moagstar.github.io/archive.html</loc>
-  <lastmod>2017-01-12T20:52:00Z</lastmod>
+  <lastmod>2017-01-12T20:59:00Z</lastmod>
  </url>
  <url>
   <loc>http://moagstar.github.io/categories/</loc>
@@ -24,5 +28,9 @@
  <url>
   <loc>http://moagstar.github.io/listings/</loc>
   <lastmod>2017-01-12T20:52:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://moagstar.github.io/posts/first-post/</loc>
+  <lastmod>2017-01-12T20:59:00Z</lastmod>
  </url>
 </urlset>
