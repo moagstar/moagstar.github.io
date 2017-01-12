@@ -164,7 +164,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>However this is really cumbersome, error prone and easy to forget. However because of the way <code>Mock</code> and <code>MagicMock</code> work (by creating accessed attributes as new child mocks if the attribute doesn't exist) we can just invoke the functions in <code>with</code> blocks until we get to the call to fetchone, which still needs return_value mocked like before. When the function under test is invoked the <code>call</code> en <code>__enter__</code> attributes will already exist, and the mock objects set up here are used by the code under test. This is much more readable than the chaining of multiple <code>return_value</code> and <code>__enter__</code>.</p>
+<p>However this is really cumbersome, error prone and easy to forget. However because of the way <code>Mock</code> and <code>MagicMock</code> work (by creating new child mocks for attributes as they are accessed if they don't already exist) we can just invoke the functions in <code>with</code> blocks until we get to the call to <code>fetchone</code>. The dummy value still needs to be assigned to the <code>return_value</code> of <code>fetchone</code> like before. However this time without chaining all those <code>__enter__</code> and <code>return_value</code>'s. When the function under test is invoked the <code>call</code> en <code>__enter__</code> mocks already exist, and are used by the code under test. I reckon this much more readable.</p>
 
 </div>
 </div>
@@ -199,19 +199,6 @@
 </div>
 </div>
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-</div>
 </div>
 </div>
 
