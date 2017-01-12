@@ -5,10 +5,10 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1484254767.4501145
+_modified_time = 1484254767.512685
 _enable_loop = True
-_template_filename = '/home/moagstar/Projects/moagstar.github.io/.venv/lib/python3.6/site-packages/nikola/data/themes/base/templates/list_post.tmpl'
-_template_uri = 'list_post.tmpl'
+_template_filename = '/home/moagstar/Projects/moagstar.github.io/.venv/lib/python3.6/site-packages/nikola/data/themes/base/templates/list.tmpl'
+_template_uri = 'list.tmpl'
 _source_encoding = 'utf-8'
 _exports = ['content']
 
@@ -32,11 +32,10 @@ def render_body(context,**pageargs):
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         _import_ns = {}
         _mako_get_namespace(context, 'archive_nav')._populate(_import_ns, ['*'])
-        posts = _import_ns.get('posts', context.get('posts', UNDEFINED))
-        date_format = _import_ns.get('date_format', context.get('date_format', UNDEFINED))
         def content():
             return render_content(context._locals(__M_locals))
         title = _import_ns.get('title', context.get('title', UNDEFINED))
+        items = _import_ns.get('items', context.get('items', UNDEFINED))
         archive_nav = _mako_get_namespace(context, 'archive_nav')
         messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
         __M_writer = context.writer()
@@ -57,11 +56,10 @@ def render_content(context,**pageargs):
     try:
         _import_ns = {}
         _mako_get_namespace(context, 'archive_nav')._populate(_import_ns, ['*'])
-        posts = _import_ns.get('posts', context.get('posts', UNDEFINED))
-        date_format = _import_ns.get('date_format', context.get('date_format', UNDEFINED))
         def content():
             return render_content(context)
         title = _import_ns.get('title', context.get('title', UNDEFINED))
+        items = _import_ns.get('items', context.get('items', UNDEFINED))
         archive_nav = _mako_get_namespace(context, 'archive_nav')
         messages = _import_ns.get('messages', context.get('messages', UNDEFINED))
         __M_writer = context.writer()
@@ -70,24 +68,22 @@ def render_content(context,**pageargs):
         __M_writer('</h1>\n    </header>\n    ')
         __M_writer(str(archive_nav.archive_navigation()))
         __M_writer('\n')
-        if posts:
+        if items:
             __M_writer('    <ul class="postlist">\n')
-            for post in posts:
-                __M_writer('        <li><time class="listdate" datetime="')
-                __M_writer(str(post.formatted_date('webiso')))
-                __M_writer('" title="')
-                __M_writer(filters.html_escape(str(post.formatted_date(date_format))))
+            for text, link, count in items:
+                __M_writer('        <li><a href="')
+                __M_writer(str(link))
                 __M_writer('">')
-                __M_writer(filters.html_escape(str(post.formatted_date(date_format))))
-                __M_writer('</time> <a href="')
-                __M_writer(str(post.permalink()))
-                __M_writer('" class="listtitle">')
-                __M_writer(filters.html_escape(str(post.title())))
-                __M_writer('</a></li>\n')
+                __M_writer(filters.html_escape(str(text)))
+                __M_writer('</a>\n')
+                if count:
+                    __M_writer('            (')
+                    __M_writer(str(count))
+                    __M_writer(')\n')
             __M_writer('    </ul>\n')
         else:
             __M_writer('    <p>')
-            __M_writer(str(messages("No posts found.")))
+            __M_writer(str(messages("Nothing found.")))
             __M_writer('</p>\n')
         __M_writer('</article>\n')
         return ''
@@ -97,6 +93,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/home/moagstar/Projects/moagstar.github.io/.venv/lib/python3.6/site-packages/nikola/data/themes/base/templates/list_post.tmpl", "uri": "list_post.tmpl", "source_encoding": "utf-8", "line_map": {"23": 3, "29": 0, "43": 2, "44": 3, "49": 21, "55": 5, "68": 5, "69": 8, "70": 8, "71": 10, "72": 10, "73": 11, "74": 12, "75": 13, "76": 14, "77": 14, "78": 14, "79": 14, "80": 14, "81": 14, "82": 14, "83": 14, "84": 14, "85": 14, "86": 14, "87": 16, "88": 17, "89": 18, "90": 18, "91": 18, "92": 20, "98": 92}}
+{"filename": "/home/moagstar/Projects/moagstar.github.io/.venv/lib/python3.6/site-packages/nikola/data/themes/base/templates/list.tmpl", "uri": "list.tmpl", "source_encoding": "utf-8", "line_map": {"23": 3, "29": 0, "42": 2, "43": 3, "48": 24, "54": 5, "66": 5, "67": 8, "68": 8, "69": 10, "70": 10, "71": 11, "72": 12, "73": 13, "74": 14, "75": 14, "76": 14, "77": 14, "78": 14, "79": 15, "80": 16, "81": 16, "82": 16, "83": 19, "84": 20, "85": 21, "86": 21, "87": 21, "88": 23, "94": 88}}
 __M_END_METADATA
 """
