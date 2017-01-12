@@ -1,0 +1,4 @@
+Sitemap: http://moagstar.github.io/sitemapindex.xml
+
+User-Agent: *
+Host: moagstar.github.io
