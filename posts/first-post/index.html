@@ -108,7 +108,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [1]:</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pymssql</span>
@@ -139,7 +139,7 @@
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [2]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">unittest.mock</span>
@@ -178,14 +178,14 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>However this is really cumbersome, error prone and easy to forget. However because of the way <code>Mock</code> and <code>MagicMock</code> work (by creating accessed attributes as new child mocks if the attribute doesn't exist) we can just invoke the functions in <code>with</code> blocks and the setup code is automatically generated. When the function under test is invoked the attributes will already exist, and the mock objects I already set up are used by the code under test. This is much more readable than the chaining of multiple <code>return_value</code> and <code>__enter__</code>.</p>
+<p>However this is really cumbersome, error prone and easy to forget. However because of the way <code>Mock</code> and <code>MagicMock</code> work (by creating accessed attributes as new child mocks if the attribute doesn't exist) we can just invoke the functions in <code>with</code> blocks until we get to the call to fetchone, which still needs return_value mocked like before. When the function under test is invoked the <code>call</code> en <code>__enter__</code> attributes will already exist, and the mock objects set up here are used by the code under test. This is much more readable than the chaining of multiple <code>return_value</code> and <code>__enter__</code>.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [3]:</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">unittest</span><span class="o">.</span><span class="n">mock</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s1">'pymssql.connect'</span><span class="p">)</span> <span class="k">as</span> <span class="n">connect</span><span class="p">:</span>
@@ -213,6 +213,19 @@
 </div>
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
 </div>
 </div>
 
