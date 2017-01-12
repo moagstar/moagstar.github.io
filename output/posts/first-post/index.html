@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="moagstar">
 <meta property="og:title" content="First Post">
 <meta property="og:url" content="http://moagstar.github.io/posts/first-post/">
-<meta property="og:description" content="Write your post here.">
+<meta property="og:description" content="I came across an interesting way to setup mock objects the other day in python. I was trying to mock out a call to the database. I always have difficulties mocking context managers, because I so often">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2017-01-12T21:58:28+01:00">
 </head>
@@ -101,10 +101,121 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Write your post here.</p>
+<p>I came across an interesting way to setup mock objects the other day in python. I was trying to mock out a call to the database. I always have difficulties mocking context managers, because I so often forget that it is the <code>return_value</code> of <code>__enter__</code> that needs to be patched. Anyway the code that I was trying to mock looked something like this.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pymssql</span>
+
+<span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">database</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">pymssql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">database</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="n">as_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">callproc</span><span class="p">(</span><span class="s1">'pLoadData'</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+            <span class="c1"># do some stuff with result</span>
+            <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After some head scratching and several attempts I managed to get the mock setup to patch in my own result to <code>fetchone</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">unittest.mock</span>
+
+<span class="k">with</span> <span class="n">unittest</span><span class="o">.</span><span class="n">mock</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s1">'pymssql.connect'</span><span class="p">)</span> <span class="k">as</span> <span class="n">connect</span><span class="p">:</span>
+    
+    <span class="n">connect</span><span class="o">.</span><span class="n">return_value</span><span class="o">.</span><span class="n">__enter__</span><span class="o">.</span><span class="n">return_value</span> \
+        <span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">return_value</span><span class="o">.</span><span class="n">__enter__</span><span class="o">.</span><span class="n">return_value</span> \
+            <span class="o">.</span><span class="n">fetchone</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="mi">42</span>
+            
+    <span class="nb">print</span><span class="p">(</span><span class="n">load_data</span><span class="p">(</span><span class="s1">'server'</span><span class="p">,</span> <span class="s1">'database'</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>42
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>However this is really cumbersome, error prone and easy to forget. However because of the way <code>Mock</code> and <code>MagicMock</code> work (by creating accessed attributes as new child mocks if the attribute doesn't exist) we can just invoke the functions in <code>with</code> blocks and the setup code is automatically generated. When the function under test is invoked the attributes will already exist, and the mock objects I already set up are used by the code under test. This is much more readable than the chaining of multiple <code>return_value</code> and <code>__enter__</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">unittest</span><span class="o">.</span><span class="n">mock</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s1">'pymssql.connect'</span><span class="p">)</span> <span class="k">as</span> <span class="n">connect</span><span class="p">:</span>
+    
+    <span class="k">with</span> <span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="mi">42</span>
+            
+    <span class="nb">print</span><span class="p">(</span><span class="n">load_data</span><span class="p">(</span><span class="s1">'server'</span><span class="p">,</span> <span class="s1">'database'</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>42
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     </div>
   </div>
