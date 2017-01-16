@@ -1057,23 +1057,23 @@ MARKDOWN_EXTENSIONS = ['fenced_code', 'codehilite', 'extra']
 # long time). Insert anything you want here, or even make it empty (which is
 # the default right now)
 # (translatable)
-# SOCIAL_BUTTONS_CODE = """
-# <!-- Social buttons -->
-# <div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
-# <a class="addthis_button_more">Share</a>
-# <ul><li><a class="addthis_button_facebook"></a>
-# <li><a class="addthis_button_google_plusone_share"></a>
-# <li><a class="addthis_button_linkedin"></a>
-# <li><a class="addthis_button_twitter"></a>
-# </ul>
-# </div>
-# <script src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
-# <!-- End of social buttons -->
-# """
+SOCIAL_BUTTONS_CODE = """
+<!-- Social buttons -->
+<div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
+<a class="addthis_button_more">Share</a>
+<ul><li><a class="addthis_button_facebook"></a>
+<li><a class="addthis_button_google_plusone_share"></a>
+<li><a class="addthis_button_linkedin"></a>
+<li><a class="addthis_button_twitter"></a>
+</ul>
+</div>
+<script src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
+<!-- End of social buttons -->
+"""
 
 # Show link to source for the posts?
 # Formerly known as HIDE_SOURCELINK (inverse)
-# SHOW_SOURCELINK = True
+SHOW_SOURCELINK = False
 # Copy the source files for your pages?
 # Setting it to False implies SHOW_SOURCELINK = False
 # COPY_SOURCES = True
@@ -1084,7 +1084,7 @@ MARKDOWN_EXTENSIONS = ['fenced_code', 'codehilite', 'extra']
 
 # By default, Nikola generates RSS files for the website and for tags, and
 # links to it.  Set this to False to disable everything RSS-related.
-# GENERATE_RSS = True
+GENERATE_RSS = False
 
 # By default, Nikola does not generates Atom files for indexes and links to
 # them. Generate Atom for tags by setting TAG_PAGES_ARE_INDEXES to True.
@@ -1142,19 +1142,19 @@ MARKDOWN_EXTENSIONS = ['fenced_code', 'codehilite', 'extra']
 # """ % SITE_URL
 #
 # If you prefer a Google search form, here's an example that should just work:
-# SEARCH_FORM = """
-# <!-- Google custom search -->
-# <form method="get" action="https://www.google.com/search" class="navbar-form navbar-right" role="search">
-# <div class="form-group">
-# <input type="text" name="q" class="form-control" placeholder="Search">
-# </div>
-# <button type="submit" class="btn btn-primary">
-# 	<span class="glyphicon glyphicon-search"></span>
-# </button>
-# <input type="hidden" name="sitesearch" value="%s">
-# </form>
-# <!-- End of custom search -->
-# """ % SITE_URL
+SEARCH_FORM = """
+<!-- Google custom search -->
+<form method="get" action="https://www.google.com/search" class="navbar-form navbar-right" role="search">
+<div class="form-group">
+<input type="text" name="q" class="form-control" placeholder="Search">
+</div>
+<button type="submit" class="btn btn-primary">
+	<span class="glyphicon glyphicon-search"></span>
+</button>
+<input type="hidden" name="sitesearch" value="%s">
+</form>
+<!-- End of custom search -->
+""" % SITE_URL
 
 # Use content distribution networks for jQuery, twitter-bootstrap css and js,
 # and html5shiv (for older versions of Internet Explorer)
