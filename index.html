@@ -1,63 +1,84 @@
 <!DOCTYPE html>
-<html prefix="
-og: http://ogp.me/ns# article: http://ogp.me/ns/article#
-" vocab="http://ogp.me/ns" lang="en">
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="description" content="moagstar">
-<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>moagstar</title>
+<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="assets/css/rst.css" rel="stylesheet" type="text/css">
-<link href="assets/css/poole.css" rel="stylesheet" type="text/css">
-<link href="assets/css/hyde.css" rel="stylesheet" type="text/css">
 <link href="assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="assets/css/colorbox.css" rel="stylesheet" type="text/css">
+<link href="assets/css/theme.css" rel="stylesheet" type="text/css">
 <link href="assets/css/ipython.min.css" rel="stylesheet" type="text/css">
 <link href="assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700%7CAbril+Fatface">
-<meta content="#5670d4" name="theme-color">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="http://moagstar.github.io/">
 <!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/a-better-way-to-mock-context-managers-in-python/" type="text/html">
 </head>
-<body class="theme-base-08">
-    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
 
-    <div class="sidebar">
-        <div class="container sidebar-sticky">
-            <div class="sidebar-about">
-              <h1>
-                <a href="http://moagstar.github.io/">
-                      <h1 id="brand"><a href="http://moagstar.github.io/" title="moagstar" rel="home">
+<!-- Menubar -->
 
-        <span id="blog-title">moagstar</span>
-    </a></h1>
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://moagstar.github.io/">
 
-                </a>
-              </h1>
-                <p class="lead">moagstar</p>
-
-            </div>
-                <nav id="menu" role="navigation" class="sidebar-nav"><a class="sidebar-nav-item" href="archive.html">Archive</a>
-        <a class="sidebar-nav-item" href="categories/">Tags</a>
-        <a class="sidebar-nav-item" href="rss.xml">RSS feed</a>
-    
-    
-    </nav><footer id="footer"><span class="copyright">
-              Contents © 2017         <a href="mailto:moagstar@gmail.com">Daniel Bradburn</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
-            </span>
-            
-            
-        </footer>
-</div>
-    </div>
-
-    <div class="content container" id="content">
-    
-<div class="post">
-    <article class="post h-entry post-text"><header><h1 class="post-title p-name"><a href="posts/a-better-way-to-mock-context-managers-in-python/" class="u-url">A Better Way to Mock Context Managers in Python</a></h1>
-        <div class="metadata">
-            <span class="post-date dateline"><time class="published dt-published" datetime="2017-01-12T21:58:28+01:00" title="2017-01-12 21:58">2017-01-12 21:58</time></span>
+                <span id="blog-title">moagstar</span>
+            </a>
         </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="archive.html">Archive</a>
+                </li>
+<li>
+<a href="categories/">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+
+    
+<div class="postindex">
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/a-better-way-to-mock-context-managers-in-python/" class="u-url">A Better Way to Mock Context Managers in Python</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Daniel Bradburn
+            </span></p>
+            <p class="dateline"><a href="posts/a-better-way-to-mock-context-managers-in-python/" rel="bookmark"><time class="published dt-published" datetime="2017-01-12T21:58:28+01:00" title="2017-01-12 21:58">2017-01-12 21:58</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/a-better-way-to-mock-context-managers-in-python/#disqus_thread" data-disqus-identifier="cache/posts/A Better Way to Mock Context Managers in Python.html">Comments</a>
+
+
+        </p>
+</div>
     </header><div class="p-summary entry-summary">
     <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
@@ -74,14 +95,13 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [1]:</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pymssql</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pymssql</span> <span class="k">import</span> <span class="n">connect</span>
 
-<span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">database</span><span class="p">):</span>
-    <span class="k">with</span> <span class="n">pymssql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">database</span><span class="p">,</span>
-                         <span class="n">user</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">connect</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">db</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
         <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
             <span class="n">cursor</span><span class="o">.</span><span class="n">callproc</span><span class="p">(</span><span class="s1">'pLoadData'</span><span class="p">)</span>
             <span class="n">result</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
@@ -112,11 +132,11 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="k">import</span> <span class="n">patch</span>
 
 <span class="k">with</span> <span class="n">patch</span><span class="p">(</span><span class="s1">'pymssql.connect'</span><span class="p">)</span> <span class="k">as</span> <span class="n">connect</span><span class="p">:</span>
-    
+
     <span class="n">connect</span><span class="o">.</span><span class="n">return_value</span><span class="o">.</span><span class="n">__enter__</span><span class="o">.</span><span class="n">return_value</span> \
         <span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">return_value</span><span class="o">.</span><span class="n">__enter__</span><span class="o">.</span><span class="n">return_value</span> \
             <span class="o">.</span><span class="n">fetchone</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="mi">42</span>
-            
+
     <span class="nb">print</span><span class="p">(</span><span class="n">load_data</span><span class="p">(</span><span class="s1">'server'</span><span class="p">,</span> <span class="s1">'database'</span><span class="p">))</span>
 </pre></div>
 
@@ -156,11 +176,11 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">patch</span><span class="p">(</span><span class="s1">'pymssql.connect'</span><span class="p">)</span> <span class="k">as</span> <span class="n">connect</span><span class="p">:</span>
-
+    
     <span class="k">with</span> <span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
         <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
             <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="mi">42</span>
-
+            
     <span class="nb">print</span><span class="p">(</span><span class="n">load_data</span><span class="p">(</span><span class="s1">'server'</span><span class="p">,</span> <span class="s1">'database'</span><span class="p">))</span>
 </pre></div>
 
@@ -191,14 +211,26 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
     </article>
 </div>
 
-               <script>var disqus_shortname="https-moagstar-github-io";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
+
+
+        
+       <script>var disqus_shortname="https-moagstar-github-io";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
             MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
             </script>
 </div>
+        <!--End of body content-->
 
-    
-    
-        
+        <footer id="footer">
+            Contents © 2017         <a href="mailto:moagstar@gmail.com">Daniel Bradburn</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
 
+
+            <script src="assets/js/jquery.min.js"></script><script src="assets/js/bootstrap.min.js"></script><script src="assets/js/moment-with-locales.min.js"></script><script src="assets/js/fancydates.js"></script><script src="assets/js/jquery.colorbox-min.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
 </body>
 </html>
